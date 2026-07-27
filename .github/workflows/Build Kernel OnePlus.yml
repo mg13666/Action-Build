@@ -6,7 +6,7 @@ on:
         type: choice
         description: "配置文件//Configuration file"
         required: true
-        default: oneplus_ace2_pro_b
+        default: oneplus_ace5_b
         options:
           - oneplus_nord_n30_se_5g_v
           - oneplus_10r_v
@@ -152,9 +152,9 @@ on:
         default: false
       DROID_SPACES:
         type: boolean
-        description: "是否添加轻量级Linux容器支持(DroidSpaces)？//Add lightweight Linux container support (DroidSpaces)?"
+        description: "是否添加Docker/OCI Linux容器支持？//Add Docker/OCI Linux container support?"
         required: true
-        default: false
+        default: true
       RE_KERNEL:
         type: boolean
         description: "是否添加Re-Kernel？//Add Re-Kernel?"
