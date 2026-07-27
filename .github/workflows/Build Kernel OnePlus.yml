@@ -1040,19 +1040,80 @@ jobs:
             set_config "CONFIG_BBG=y"
           fi
 
-          # DROID_SPACES配置*
+          # Docker / OCI / DroidSpaces 容器配置*
           if [ "${{ github.event.inputs.DROID_SPACES }}" = "true" ]; then
+            # namespaces and IPC
             set_config "CONFIG_NTSYNC=y"
             set_config "CONFIG_SYSVIPC=y"
             set_config "CONFIG_DEVTMPFS=y"
-            set_config "CONFIG_PID_NS=y"
+            set_config "CONFIG_NAMESPACES=y"
+            set_config "CONFIG_UTS_NS=y"
             set_config "CONFIG_IPC_NS=y"
             set_config "CONFIG_USER_NS=y"
-            set_config "CONFIG_NAMESPACES=y"
+            set_config "CONFIG_PID_NS=y"
+            set_config "CONFIG_NET_NS=y"
             set_config "CONFIG_POSIX_MQUEUE=y"
+
+            # cgroup v1/v2 resource controllers
+            set_config "CONFIG_CGROUPS=y"
+            set_config "CONFIG_CGROUP_SCHED=y"
+            set_config "CONFIG_FAIR_GROUP_SCHED=y"
+            set_config "CONFIG_CFS_BANDWIDTH=y"
+            set_config "CONFIG_CGROUP_PIDS=y"
+            set_config "CONFIG_CGROUP_CPUACCT=y"
+            set_config "CONFIG_CGROUP_DEVICE=y"
+            set_config "CONFIG_CPUSETS=y"
+            set_config "CONFIG_MEMCG=y"
+            set_config "CONFIG_MEMCG_SWAP=y"
+            set_config "CONFIG_CGROUP_FREEZER=y"
+            set_config "CONFIG_CGROUP_HUGETLB=y"
+            set_config "CONFIG_CGROUP_BPF=y"
+
+            # overlay2 storage and container security
+            set_config "CONFIG_OVERLAY_FS=y"
+            set_config "CONFIG_OVERLAY_FS_REDIRECT_DIR=y"
+            set_config "CONFIG_OVERLAY_FS_INDEX=y"
+            set_config "CONFIG_OVERLAY_FS_XINO_AUTO=y"
+            set_config "CONFIG_KEYS=y"
+            set_config "CONFIG_SECCOMP=y"
+            set_config "CONFIG_SECCOMP_FILTER=y"
+            set_config "CONFIG_CHECKPOINT_RESTORE=y"
+
+            # Docker bridge networking, NAT and virtual interfaces
+            set_config "CONFIG_VETH=y"
+            set_config "CONFIG_BRIDGE=y"
+            set_config "CONFIG_BRIDGE_NETFILTER=y"
+            set_config "CONFIG_NETFILTER=y"
+            set_config "CONFIG_NETFILTER_ADVANCED=y"
+            set_config "CONFIG_NETFILTER_XTABLES=y"
+            set_config "CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y"
+            set_config "CONFIG_NETFILTER_XT_MATCH_CONNTRACK=y"
+            set_config "CONFIG_NETFILTER_XT_MARK=y"
+            set_config "CONFIG_NETFILTER_XT_TARGET_MASQUERADE=y"
             set_config "CONFIG_NETFILTER_XT_TARGET_REJECT=y"
             set_config "CONFIG_NETFILTER_XT_TARGET_LOG=y"
             set_config "CONFIG_NETFILTER_XT_MATCH_RECENT=y"
+            set_config "CONFIG_NF_CONNTRACK=y"
+            set_config "CONFIG_NF_NAT=y"
+            set_config "CONFIG_NF_TABLES=y"
+            set_config "CONFIG_IP_NF_IPTABLES=y"
+            set_config "CONFIG_IP_NF_FILTER=y"
+            set_config "CONFIG_IP_NF_NAT=y"
+            set_config "CONFIG_IP_NF_TARGET_MASQUERADE=y"
+            set_config "CONFIG_IP6_NF_IPTABLES=y"
+            set_config "CONFIG_IP6_NF_FILTER=y"
+            set_config "CONFIG_IPVLAN=y"
+            set_config "CONFIG_MACVLAN=y"
+            set_config "CONFIG_VXLAN=y"
+            set_config "CONFIG_DUMMY=y"
+            set_config "CONFIG_TUN=y"
+
+            # runtime diagnostics and eBPF
+            set_config "CONFIG_INET_DIAG=y"
+            set_config "CONFIG_PACKET_DIAG=y"
+            set_config "CONFIG_UNIX_DIAG=y"
+            set_config "CONFIG_BPF_SYSCALL=y"
+            set_config "CONFIG_BPF_JIT=y"
           fi
 
           # IPSET & IPv6_NAT & TTL配置*
